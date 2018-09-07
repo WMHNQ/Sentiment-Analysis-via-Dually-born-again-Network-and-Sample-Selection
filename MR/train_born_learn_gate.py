@@ -30,7 +30,7 @@ f_epoch = 50
 bornNtimes = 5
 born_epoch = 10
 l2_reg = 0
-
+balance_lable=0.8
 balance_gate = np.array([0.8])    #大于0
 import tensorflow as tf
 import numpy as np
@@ -109,8 +109,8 @@ def preprocess():
     )
     if born:
         y_train = np.load(born_file)
-
-    y_train = (np.load('result/LSTMCNN/train_0.npy')+np.load('result/LIN/train_0.npy')+np.load('result/CNN/train_0.npy'))/3
+    ensmble_lable = (np.load('result/LIN/train_0.npy')+np.load('result/CNN/train_0.npy')+np.load('result/LSTMCNN/train_0.npy'))/3
+    y_train = balance_lable*ensmble_lable+(1-balance_lable)*y_train
     print("Vocabulary Size: {:d}".format(len(word_id_mapping)))
     print("Train/Dev/test split: {:d}/{:d}/{:d}".format(len(y_train), len(y_dev), len(y_test)))
     return x_train, y_train, x_dev, y_dev, x_test,y_test, x_test_len, w2v
