@@ -38,8 +38,8 @@ elif MODEL_TO_RUN == 2:
 # ==================================================
 
 # Data loading params
-tf.flags.DEFINE_string("data_file", "./data/mr/mr0", "Data source.")
-tf.app.flags.DEFINE_string('embedding_file_path', 'data/mr_glove.42B.300d.txt', 'embedding file')
+tf.flags.DEFINE_string("data_file", "./data/sst/sst0", "Data source.")
+tf.app.flags.DEFINE_string('embedding_file_path', 'data/sst_glove.42B.300d.txt', 'embedding file')
 tf.app.flags.DEFINE_integer('word_embedding_dim', 300, 'dimension of word embedding')
 
 # Model Hyperparameters
